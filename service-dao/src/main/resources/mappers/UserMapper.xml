@@ -1,0 +1,153 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="core.admin.dao.UserMapper">
+    <resultMap id="userMap" type="NetworkUser">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="status" property="status"/>
+        <result column="user_type" property="userType"/>
+        <result column="city_code" property="cityCode"/>
+        <result column="prov_code" property="provCode"/>
+        <result column="area_code" property="areaCode"/>
+        <result column="mobile" property="mobile"/>
+        <result column="address" property="address"/>
+        <result column="network_id" property="networkId"/>
+        <result column="logistics_id" property="logisticsId"/>
+        <result column="role_id" property="roleId"/>
+        <result column="join_time" property="joinTime"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="networkName" property="networkName"/>
+        <result column="logisticsName" property="logisticsName"/>
+        <result column="email" property="email"/>
+        <result column="avatar" property="avatar"/>
+        <result column="openId" property="openId"/>
+        <result column="position" property="position"/>
+    </resultMap>
+
+    <sql id="pageSql">
+        limit #{offset},#{limit}
+    </sql>
+
+    <!--多级联动-->
+    <select id="proList" resultType="core.admin.domain.Provice">
+        select * from region where `parent_id`=1
+    </select>
+    <!--多级联动-->
+    <select id="NetList" parameterType="java.lang.String" resultType="core.admin.domain.BranchNetwork">
+        select * from bd_branch_network where area_code=#{area_code}
+    </select>
+    <!--豆豆查询地名-->
+    <select id="getCName" parameterType="java.lang.String" resultType="java.lang.Long">
+        select id from region where name=#{name}
+    </select>
+
+    <select id="getUserByCredential" resultMap="userMap">
+        select *
+        from bd_admin_user
+        where mobile = #{mobile} and password = #{password}
+    </select>
+
+    <select id="getUserByMobile" resultType="int">
+        select count(*)
+        from bd_admin_user
+        where mobile = #{mobile}
+    </select>
+
+    <!-- 查询总数 -->
+    <select id="countAdminUserList" resultType="int">
+
+        <![CDATA[select count(u.id)
+            from bd_admin_user as u  left join bd_branch_network as n on u.network_id=n.id
+        ]]>
+        order by u.id desc
+    </select>
+
+    <select id="findAdminUserList" parameterType="java.util.Map" resultMap="userMap">
+        <![CDATA[
+            select u.id as id,u.username as username,u.status as status,u.user_type AS userType,u.network_id AS networkId,u.join_time AS joinTime,u.city_code AS cityCode,u.prov_code AS provCode,u.area_code AS areaCode,u.mobile as mobile,u.address as address,u.create_time AS createTime,u.update_time AS updateTime,n.name as networkName,
+            l.name as logisticsName,u.logistics_id as logistics_id,u.role_id as role_id
+            from bd_admin_user as u  left join bd_branch_network as n on u.network_id=n.id left join logistics_firm l on u.logistics_id = l.id
+        ]]>
+        <include refid="QUERY_ORDER_LIMIT_CONDITION"/>
+    </select>
+
+
+    <!-- 查询ById -->
+    <select id="selectById" parameterType="java.lang.Long" resultMap="userMap">
+        <![CDATA[
+            select u.email as email,u.avatar as avatar,u.openId as openId,u.position as position,u.id as id,u.username as username,u.status as status,u.user_type AS userType,u.network_id AS networkId,u.join_time AS joinTime,u.city_code AS cityCode,u.prov_code AS provCode,u.area_code AS areaCode,u.mobile as mobile,u.address as address,u.create_time AS createTime,u.update_time AS updateTime,n.name as networkName,
+            l.name as logisticsName,u.logistics_id as logistics_id,u.role_id as role_id
+            from bd_admin_user as u  left join bd_branch_network as n on u.network_id=n.id left join logistics_firm l on u.logistics_id = l.id
+        ]]>
+        <where>
+          u.id = #{id}
+        </where>
+    </select>
+
+    <insert id="update" parameterType="core.admin.domain.NetworkUser">
+        UPDATE bd_admin_user
+        <include refid="UPDATE_COLUMN_SET"/>
+        <![CDATA[WHERE id = #{id}]]>
+    </insert>
+
+    <update id="resetPassword">
+        update bd_admin_user
+        set password = #{cipher},
+        update_time = #{now}
+        where id = #{id}
+    </update>
+
+    <update id="updateStatus">
+        update bd_admin_user
+        set status = #{status},
+        update_time = #{now}
+        where id = #{id}
+    </update>
+
+    <delete id="removeNetworkUser">
+        DELETE FROM bd_admin_user
+        WHERE id=#{id}
+    </delete>
+
+    <insert id="createUser" parameterType="core.admin.domain.NetworkUser">
+        <selectKey keyProperty="id"  order="AFTER" resultType="java.lang.Integer">
+          SELECT LAST_INSERT_ID()
+        </selectKey>
+        <![CDATA[
+          insert into bd_admin_user(username,password,status,user_type,logistics_id,city_code,prov_code,area_code,mobile,address,network_id,role_id,join_time,create_time,update_time,email,avatar,openId,position)
+          values(#{username},#{password},1,1,#{logisticsId},#{cityCode},#{provCode},#{areaCode},#{mobile},#{address},#{networkId},#{roleId},#{joinTime},#{createTime},#{updateTime},#{email},#{avatar},#{openId},#{position})
+        ]]>
+    </insert>
+
+
+
+    <!-- 智能排序与分页 -->
+    <sql id="QUERY_ORDER_LIMIT_CONDITION">
+        <if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
+        <if test="startIndex != null and startIndex &gt;= 0 and pageSize != null and pageSize &gt; 0"><![CDATA[LIMIT #{startIndex},#{pageSize}]]></if>
+    </sql>
+
+    <!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
+    <sql id="UPDATE_COLUMN_SET">
+        <set>
+            <if test="username != null"><![CDATA[ `username` = #{username},]]></if>
+            <if test="password != null and password != ''"><![CDATA[ `password` = #{password},]]></if>
+            <if test="cityCode != null and cityCode != ''"><![CDATA[ `city_code` = #{cityCode},]]></if>
+            <if test="provCode != null"><![CDATA[ `prov_code` = #{provCode},]]></if>
+            <if test="areaCode != null"><![CDATA[ `area_code` = #{areaCode},]]></if>
+            <if test="mobile != null"><![CDATA[ `mobile` = #{mobile},]]></if>
+            <if test="address != null"><![CDATA[ `address` = #{address},]]></if>
+            <if test="joinTime != null"><![CDATA[ `join_time` = #{joinTime},]]></if>
+            <if test="networkId != null"><![CDATA[ `network_id` = #{networkId},]]></if>
+            <if test="logisticsId != null"><![CDATA[ `logistics_id` = #{logisticsId},]]></if>
+            <if test="updateTime != null"><![CDATA[ `update_time` = #{updateTime},]]></if>
+            <if test="roleId != null"><![CDATA[ `role_id` = #{roleId},]]></if>
+            <if test="email != null"><![CDATA[ `email` = #{email},]]></if>
+            <if test="avatar != null"><![CDATA[ `avatar` = #{avatar},]]></if>
+            <if test="openId != null"><![CDATA[ `openId` = #{openId},]]></if>
+            <if test="position != null"><![CDATA[ `position` = #{position},]]></if>
+        </set>
+    </sql>
+</mapper>

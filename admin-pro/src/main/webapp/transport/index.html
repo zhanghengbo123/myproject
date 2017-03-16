@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<div ng-controller="SkyController">
+
+	<ul class="nav nav-list">
+
+		<li class="" ng-repeat="x in menulist">
+			<a href="#/branchNetwork" class="dropdown-toggle">
+				<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">
+								{{x.name}}
+							</span>
+
+				<b class="arrow fa fa-angle-down"></b>
+			</a>
+
+			<b class="arrow"></b>
+
+			<ul class="submenu">
+				<li class="">
+
+				<li class="">
+					<a href="#/networkuser" data-url="page/typography">
+						<i class="menu-icon fa fa-caret-right"></i>
+
+					</a>
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="#/networkuser" data-url="page/typography">
+						<i class="menu-icon fa fa-caret-right"></i>
+
+					</a>
+					<b class="arrow"></b>
+				</li>
+			</ul>
+		</li>
+
+
+	</ul>
+
+
+</div>
