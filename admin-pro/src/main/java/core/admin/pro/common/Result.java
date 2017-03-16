@@ -4,10 +4,6 @@ import core.admin.common.ErrorCode;
 
 import java.io.Serializable;
 
-/**
- * DATE:7/29/15 11:16 AM
- * AUTHOR:liuxianglong
- */
 public class Result implements Serializable {
     private static final long serialVersionUID = -6021601541007680588L;
 

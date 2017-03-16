@@ -3,9 +3,6 @@ package core.admin.pro.common;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * liuxianglong
- */
 public enum OrderStatusEnum {
 
     CANCELED(1,"已取消"),

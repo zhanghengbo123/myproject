@@ -8,10 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
-/**
- * DATE:8/14/15 20:05
- * AUTHOR:wangzhen
- */
 public interface UserService {
     NetworkUser login(HttpServletRequest request, String mobile, String password);
 

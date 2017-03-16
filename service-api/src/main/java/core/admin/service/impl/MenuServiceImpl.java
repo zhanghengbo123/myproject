@@ -1,6 +1,5 @@
 package core.admin.service.impl;
 
-import core.admin.common.AdminConstants;
 import core.admin.common.constants.exception.AppException;
 import core.admin.common.page.Page;
 import core.admin.dao.MenuMapper;
@@ -14,9 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by pop on 16/1/24.
- */
 @Service("menuService")
 public class MenuServiceImpl implements MenuService {
 

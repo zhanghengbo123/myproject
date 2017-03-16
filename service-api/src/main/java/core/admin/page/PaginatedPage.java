@@ -7,11 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-/**
- * DATE:8/3/15 12:54
- * AUTHOR:wangzhen
- */
 public class PaginatedPage<T> implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(PaginatedPage.class);
 

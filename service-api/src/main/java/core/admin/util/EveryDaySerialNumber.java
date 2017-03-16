@@ -4,14 +4,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * <p/>
- * Author    : liuxianglong
- * CreateTime:  15/12/13  14:29
- * <p/>
- * Version: 1.0
- * <p/>
- */
+
 public abstract class EveryDaySerialNumber extends OrderSerialNumber {
     protected final static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
     protected DecimalFormat df = null;

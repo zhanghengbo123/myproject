@@ -1,8 +1,5 @@
 package core.admin.pro.service.login;
 
-/**
- * Created by chenshaofeng1996 on 2016/9/2.
- */
 public interface LoginService {
 
     public final static String CACHE_TYPE_LOCAL = "LOCAL";

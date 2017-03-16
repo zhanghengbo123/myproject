@@ -2,10 +2,6 @@ package core.admin.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-/**
- * Created by zhang on 2016/11/29.
- */
 public class DateFormat {
     public static final String FORMAT_TIME = "yyyy年MM月dd日 HH:mm:ss";
     /**

@@ -13,9 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by pop on 16/1/24.
- */
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {
 

@@ -3,9 +3,6 @@ package core.admin.pro.util;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-/**
- * Created by chenshaofeng1996 on 2016/9/2.
- */
 public class NetworkUtil {
 
     /**

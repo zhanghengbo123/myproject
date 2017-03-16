@@ -1,9 +1,5 @@
 package core.admin.exception;
 
-/**
- * DATE:8/6/15 16:40
- * AUTHOR:wangzhen
- */
 public class ServiceDataException extends RuntimeException {
     private static final long serialVersionUID = -5838160341873917520L;
 

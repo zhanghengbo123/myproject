@@ -12,9 +12,6 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by chenshaofeng1996 on 2016/9/4.
- */
 public class UserInfo {
     private static final Logger logger = LoggerFactory.getLogger(UserInfo.class);
 

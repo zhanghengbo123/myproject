@@ -1,8 +1,4 @@
 package core.admin.domain;
-
-/**
- * Created by xianglong on 16/3/5.
- */
 public class City {
 
     private String name;

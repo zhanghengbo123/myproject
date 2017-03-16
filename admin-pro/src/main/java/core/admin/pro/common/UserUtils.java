@@ -11,10 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * DATE:8/6/15 21:58
- * AUTHOR:wangzhen
- */
 public class UserUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(UserUtils.class);

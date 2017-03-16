@@ -23,10 +23,6 @@ import java.util.Map;
 import static core.admin.pro.service.cache.LoginCacheService.LOGIN_TOKEN_HASH;
 import static core.admin.pro.service.cache.LoginCacheService.USER_ID;
 
-/**
- * Created by Administrator on 2016/10/7.
- */
-
 
 public class ManagerLogin {
     private static Logger logger = LoggerFactory.getLogger(SafeLoginControllerJson.class);

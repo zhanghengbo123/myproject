@@ -1,9 +1,5 @@
 package core.admin.pro.common;
 
-/**
- * DATE:8/6/15 16:42
- * AUTHOR:wangzhen
- */
 public class ResultCode {
 
     // COMMON ERROR

@@ -3,10 +3,6 @@ package core.admin.util;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * DATE:8/15/15 10:59
- * AUTHOR:wangzhen
- */
 public class SessionUtils {
     public static HttpSession getSession(HttpServletRequest request) {
         return request.getSession();

@@ -5,9 +5,6 @@ import core.admin.pro.service.login.LoginService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ContextLoader;
 
-/**
- * Created by chenshaofeng1996 on 2016/9/2.
- */
 @Component
 public class LoginServiceImpl implements LoginService {
 

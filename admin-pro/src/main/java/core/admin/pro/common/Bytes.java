@@ -24,11 +24,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * CodecUtils.
- * 
- * @author qian.lei
- */
 
 public class Bytes
 {

@@ -6,9 +6,6 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by pop on 16/1/18.
- */
 public interface MenuMapper {
 
     public Long save(Menu menu);

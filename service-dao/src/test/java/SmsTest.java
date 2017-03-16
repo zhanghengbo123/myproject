@@ -1,9 +1,6 @@
 import core.admin.common.SendSMSMessageUtil;
 import org.junit.Test;
 
-/**
- * Created by xianglong on 16/5/9.
- */
 public class SmsTest {
 
     @Test

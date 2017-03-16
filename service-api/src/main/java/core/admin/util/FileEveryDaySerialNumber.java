@@ -4,13 +4,6 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Author    : liuxianglong
- * CreateTime:  15/12/13  14:31
- * <p/>
- * Version: 1.0
- * <p/>
- */
 public class FileEveryDaySerialNumber extends EveryDaySerialNumber {
 
 

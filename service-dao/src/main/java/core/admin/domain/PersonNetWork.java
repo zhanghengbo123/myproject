@@ -1,8 +1,5 @@
 package core.admin.domain;
 
-/**
- * Created by 老刘 on 2016/8/31.
- */
 public class PersonNetWork {
     private static final long serialVersionUID = 1L;
 

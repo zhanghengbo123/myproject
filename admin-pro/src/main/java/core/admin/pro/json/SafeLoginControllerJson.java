@@ -1,12 +1,8 @@
 package core.admin.pro.json;
 
-import core.admin.domain.Menu;
 import core.admin.domain.NetworkUser;
-import core.admin.domain.NetworkUser;
-import core.admin.domain.Role;
 import core.admin.pro.common.Result;
 import core.admin.pro.common.ResultCode;
-import core.admin.pro.service.cache.LoginCacheService;
 import core.admin.pro.service.login.LoginService;
 import core.admin.pro.service.shiro.ShiroUserService;
 import core.admin.pro.util.ManagerLogin;
@@ -14,10 +10,8 @@ import core.admin.pro.util.NetworkUtil;
 import core.admin.service.MenuService;
 import core.admin.service.RoleService;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.collections.map.HashedMap;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,10 +25,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;
 import java.net.URLEncoder;
 import java.util.*;
-
-/**
- * Created by chenshaofeng1996 on 2016/8/30.
- */
 
 @Controller
 @RequestMapping(value = "/user")

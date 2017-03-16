@@ -8,13 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Author    : liuxianglong
- * CreateTime:  15/12/12  20:58
- * <p/>
- * Version: 1.0
- * <p/>
- */
 public class UserUtils {
 
 

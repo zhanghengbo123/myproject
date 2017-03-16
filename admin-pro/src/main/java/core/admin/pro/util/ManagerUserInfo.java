@@ -2,9 +2,6 @@ package core.admin.pro.util;
 
 import java.io.Serializable;
 
-/**
- * Created by Administrator on 2016/10/7.
- */
 public class ManagerUserInfo implements Serializable{
     private static final long serialVersionUID = -427774639033430428L;
 

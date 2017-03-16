@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedOutputStream;
 import java.io.OutputStream;
 
-/**
- * Created by Administrator on 2016/11/23 0023.
- */
 
 public class PDFUtils {/*
     private static final Logger logger = Logger.getLogger(PDFUtils.class);

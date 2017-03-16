@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- Created by xianglong on 16/4/28.
- */
+
 @ControllerAdvice
 public class BaseAction {
 

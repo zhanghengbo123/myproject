@@ -4,10 +4,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * DATE:8/15/15 11:23
- * AUTHOR:wangzhen
- */
 public class CipherUtils {
     private static final Logger logger = LoggerFactory.getLogger(core.admin.util.CipherUtils.class);
 

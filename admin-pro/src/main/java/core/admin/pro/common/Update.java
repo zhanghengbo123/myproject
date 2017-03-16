@@ -2,10 +2,6 @@ package core.admin.pro.common;
 
 import java.io.Serializable;
 
-/**
- *
- * Created by xianglong on 16/4/21.
- */
 public class Update implements Serializable {
 
 

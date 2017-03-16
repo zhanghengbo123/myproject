@@ -1,8 +1,5 @@
 package core.admin.domain;
 
-/**
- * Created by doudou on 2016/9/3.
- */
 public class Provice {
     private static final long serialVersionUID = 1L;
 

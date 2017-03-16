@@ -12,9 +12,6 @@ import org.springframework.cache.Cache.ValueWrapper;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by chenshaofeng1996 on 2016/9/2.
- */
 
 public class LoginCacheServiceImpl implements LoginCacheService {
     private static Logger logger = LoggerFactory.getLogger(SafeLoginControllerJson.class);

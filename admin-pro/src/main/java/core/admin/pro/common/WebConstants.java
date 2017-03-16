@@ -5,10 +5,6 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
-/**
- * DATE:8/3/15 15:07
- * AUTHOR:liuxainglong
- */
 public class WebConstants {
     public static final Pattern MOBILE_CHINESE_PATTERN = Pattern.compile(".*\\d{11}");
 

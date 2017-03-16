@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 /**
  *后台管理用户实体
- * Created by 祥龙 on 15/12/07.
  */
 public class NetworkUser implements Serializable {
     private static final long serialVersionUID = -4272774639033430428L;

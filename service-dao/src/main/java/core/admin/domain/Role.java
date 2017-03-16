@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * 角色实体
- * Created by pop on 16/1/18.
  */
 public class Role {
 

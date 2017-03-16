@@ -11,13 +11,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Author    : liuxianglong
- * CreateTime:  15/12/13  14:32
- * <p/>
- * Version: 1.0
- * <p/>
- */
 public  class FileUtil {
     private static final Logger logger = Logger.getLogger(FileUtil.class);
     public static void rewrite(File file, String data) {

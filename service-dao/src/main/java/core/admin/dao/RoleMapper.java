@@ -5,9 +5,6 @@ import core.admin.domain.Role;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by pop on 16/1/18.
- */
 public interface RoleMapper {
     public Long save(Role role);
 

@@ -7,10 +7,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
- /**
- * Created by 祥龙 on 15/12/07.
-  *
- */
+
 public interface UserMapper {
      public NetworkUser getUserByCredential(@Param("mobile") String mobile, @Param("password") String password);
 

@@ -5,9 +5,6 @@ import core.admin.common.AdminConstants;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by xianglong on 16/3/7.
- */
 public  class SearchMapUtils {
 
     /**
