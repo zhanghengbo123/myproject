@@ -2,12 +2,12 @@ package core.admin.dao;
 
 import core.admin.domain.Menu;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public interface MenuMapper {
-
     public Long save(Menu menu);
 
     public Long update(Menu menu);

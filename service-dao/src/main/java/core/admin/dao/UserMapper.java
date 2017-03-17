@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
-
+@Repository
 public interface UserMapper {
      public NetworkUser getUserByCredential(@Param("mobile") String mobile, @Param("password") String password);
 
