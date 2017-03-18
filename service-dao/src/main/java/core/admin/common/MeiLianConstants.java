@@ -2,9 +2,6 @@ package core.admin.common;
 
 /**
  * 美联发短信参数
- * User: liuxianglong
- * Date: 16-05-08
- * Time: 上午11:42
  */
 public class MeiLianConstants {
 

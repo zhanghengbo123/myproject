@@ -13,12 +13,6 @@ import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * 发送手机短信工具类
- * User: liuxianglong
- * Date: 16-05-08
- * Time: 上午11:42
- */
 public class SendSMSMessageUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(SendSMSMessageUtil.class);

@@ -6,11 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * Created by 祥龙 on 15/12/07.
- */
-
 public class Page<T> implements Serializable {
 	//初始化size
 	private final static int INIT_SIZE = 20;

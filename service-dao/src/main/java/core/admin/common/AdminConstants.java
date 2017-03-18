@@ -5,10 +5,6 @@ import core.admin.domain.NetworkUser;
 import java.util.*;
 import java.util.regex.Pattern;
 
-/**
- * DATE:8/15/15 11:12
- * AUTHOR:wangzhen
- */
 public class AdminConstants {
     public static final String SESSION_USER_KEY = "username";
     public static final String SESSION_USER_MENU_KEY = "menulist";

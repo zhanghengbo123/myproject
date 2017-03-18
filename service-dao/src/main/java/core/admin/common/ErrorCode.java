@@ -1,9 +1,5 @@
 package core.admin.common;
 
-/**
- * DATE:8/15/15 11:03
- * AUTHOR:wangzhen
- */
 public class ErrorCode {
     // COMMON ERROR
     public static final int SUCCESSFUL = 0;
