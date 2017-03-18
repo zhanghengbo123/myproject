@@ -1,0 +1,30 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="core.admin.dao.GoodsMessageMapper">
+    
+    <resultMap id="goodsMessageMap" type="core.admin.domain.GoodsMessage">
+        <result column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="user_id" property="userId"/>
+        <result column="goods_id" property="goodsId"/>
+    </resultMap>
+    <insert id="save" parameterType="core.admin.domain.GoodsMessage">
+        <selectKey resultType="Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into <include refid="TABLE"/>
+        (
+          `content`,`user_id`,`goods_id`
+        )
+        values
+        (
+        #{content},
+        #{userId},
+        #{goodsId}
+        )
+    </insert>
+
+
+    <sql id="TABLE">
+        <![CDATA[ goods_message ]]>
+    </sql>
+</mapper>
