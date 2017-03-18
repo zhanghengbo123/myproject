@@ -10,6 +10,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhang on 2017/3/17.
@@ -56,5 +59,17 @@ public class goodsTest {
         goodsMessage.setGoodsId(0L);
         goodsMessage.setUserId(0L);
         goodsMessageMapper.save(goodsMessage);
+    }
+
+    @Test
+    public void selectGoods(){
+        Map<String,Object> search = new HashMap<>();
+        List<Goods> list = goodsMapper.selectList(search);
+        if(list != null){
+            for(Goods goods : list){
+                if(goods != null)
+                System.out.println(goods.toString());
+            }
+        }
     }
 }

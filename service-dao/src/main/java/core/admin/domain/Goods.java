@@ -101,4 +101,20 @@ public class Goods {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "id=" + id +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsDesc='" + goodsDesc + '\'' +
+                ", goodsPic='" + goodsPic + '\'' +
+                ", goodsPrice=" + goodsPrice +
+                ", goodsUnit=" + goodsUnit +
+                ", goodsCount=" + goodsCount +
+                ", userId=" + userId +
+                ", networkUser=" + networkUser.toString() +
+                ", typeId=" + typeId +
+                '}';
+    }
 }

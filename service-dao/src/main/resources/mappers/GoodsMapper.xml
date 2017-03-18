@@ -21,7 +21,7 @@
         <selectKey resultType="Long" keyProperty="id" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        INSERT INTO <include refid="GOODSTABLE"/>
+        INSERT INTO <![CDATA[ goods  ]]>
         (`goods_name`,`goods_desc`,`goods_pic`,`goods_price`,`goods_unit`,`goods_count`,`user_id`,`type_id`)
         VALUES
         (
@@ -35,8 +35,81 @@
         #{typeId}
         )
     </insert>
+    <select id="selectList" parameterType="java.util.Map" resultMap="goodsMapper">
+        SELECT <include refid="QUERY_ONE_COLUMN_LIST"/>
+        FROM <![CDATA[ `goods` g LEFT join `bd_admin_user` u ON g.user_id = u.id]]>
+        <include refid="QUERY_WHERE_CLAUSE"/>
+        <include refid="QUERY_ORDER_LIMIT_CONDITION"/>
+    </select>
 
+    <select id="selectOne" parameterType="java.lang.Long" resultMap="goodsMapper">
+        SELECT <include refid="QUERY_ONE_COLUMN_LIST"/>
+        FROM <![CDATA[ `goods` g LEFT join `bd_admin_user` u ON g.user_id = u.id]]>
+        <where>
+            <if test="id != null and id != ''"><![CDATA[AND g.id = #{id}]]></if>
+        </where>
+        <include refid="QUERY_ORDER_LIMIT_CONDITION"/>
+    </select>
+
+    <sql id="QUERY_COLUMN_LIST">
+        `id` AS 'g_id',`goods_name` AS 'g_goods_name',`goods_desc` AS 'g_goods_name',`goods_pic` AS 'g_goods_pic',`goods_price` AS 'g_goods_price',
+        `goods_unit` AS 'g_goods_unit',`goods_count` AS 'g_goods_count',`user_id` AS 'g_user_id',`type_id` AS 'g_type_id'
+    </sql>
+    <sql id="QUERY_ONE_COLUMN_LIST">
+        g.id AS 'g_id',g.goods_name AS 'g_goods_name',g.goods_desc AS 'g_goods_name',g.goods_pic AS 'g_goods_pic',g.goods_price AS 'g_goods_price',
+        g.goods_unit AS 'g_goods_unit',g.goods_count AS 'g_goods_count',g.user_id AS 'g_user_id',g.type_id AS 'g_type_id',u.id AS 'u_id',u.username AS 'u_username',
+        u.mobile AS 'u_mobile'
+    </sql>
+
+    <!-- 查询总数 -->
+    <select id="selectListCount" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(id) AS COUNT FROM
+        <![CDATA[ goods  ]]>
+        <include refid="QUERY_WHERE_CLAUSE"/>
+        <include refid="QUERY_ORDER_LIMIT_CONDITION"/>
+    </select>
+
+    <insert id="update" parameterType="core.admin.domain.Goods">
+        UPDATE <![CDATA[ goods  ]]>
+        <include refid="UPDATE_COLUMN_SET"/>
+        <![CDATA[WHERE id = #{id}]]>
+    </insert>
+
+    <update id="delete" parameterType="java.lang.Long" >
+        DELETE FROM <![CDATA[ goods  ]]> WHERE id = #{id}
+    </update>
+
+    <!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
+    <sql id="QUERY_WHERE_CLAUSE">
+        <where>
+            <if test="id != null and id != ''"><![CDATA[AND g.id = #{id}]]></if>
+            <if test="goodsName != null and goodsName != ''"><![CDATA[AND g.goods_name = #{goodsName}]]></if>
+            <if test="goodsPic != null and goodsPic != ''"><![CDATA[AND g.goods_pic = #{goodsPic}]]></if>
+            <if test="goodsPrice != null and goodsPrice != ''"><![CDATA[AND g.goods_price = #{goodsPrice}]]></if>
+            <if test="goodsUnit != null and goodsUnit != ''"><![CDATA[AND g.goods_unit = #{goodsUnit}]]></if>
+            <if test="userId != null and userId != ''"><![CDATA[AND g.user_id = #{userId}]]></if>
+            <if test="goodsCount != null and goodsCount != ''"><![CDATA[AND g.goods_count = #{goodsCount}]]></if>
+            <if test="typeId != null and typeId != ''"><![CDATA[AND g.type_id = #{typeId}]]></if>
+        </where>
+    </sql>
+
+    <!-- 智能排序与分页 -->
+    <sql id="QUERY_ORDER_LIMIT_CONDITION">
+        <if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
+        <if test="startIndex != null and startIndex &gt;= 0 and pageSize != null and pageSize &gt; 0"><![CDATA[LIMIT #{startIndex},#{pageSize}]]></if>
+    </sql>
+    <sql id="UPDATE_COLUMN_SET">
+        <set>
+            <if test="goodsName != null and goodsName != ''"><![CDATA[ `goods_name` = #{goodsName},]]></if>
+            <if test="goodsPic != null and goodsPic != ''"><![CDATA[ `goods_pic` = #{goodsPic}]]></if>
+            <if test="goodsPrice != null and goodsPrice != ''"><![CDATA[ `goods_price` = #{goodsPrice},]]></if>
+            <if test="goodsUnit != null and goodsUnit != ''"><![CDATA[ `goods_unit` = #{goodsUnit},]]></if>
+            <if test="userId != null and userId != ''"><![CDATA[ `user_id` = #{userId},]]></if>
+            <if test="goodsCount != null and goodsCount != ''"><![CDATA[ `goods_count` = #{goodsCount},]]></if>
+            <if test="typeId != null and typeId != ''"><![CDATA[ `type_id` = #{typeId},]]></if>
+        </set>
+    </sql>
     <sql id = "GOODSTABLE">
-        <![CDATA[ goods ]]>
+        <![CDATA[ goods g ]]>
     </sql>
 </mapper>

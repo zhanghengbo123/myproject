@@ -20,4 +20,6 @@ public interface GoodsMapper {
     public List<Goods> selectList(Map<String, Object> params);
 
     public Integer selectListCount(Map<String, Object> params);
+
+    public List<Goods> selectOne(Long id);
 }

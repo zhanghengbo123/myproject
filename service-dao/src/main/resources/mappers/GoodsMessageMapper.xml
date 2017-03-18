@@ -22,7 +22,56 @@
         #{goodsId}
         )
     </insert>
+    <select id="selectList" parameterType="java.util.Map" resultMap="goodsMessageMap">
+        SELECT <include refid="QUERY_COLUMN_LIST"/>
+        FROM <include refid="TABLE"/>
+        <include refid="QUERY_WHERE_CLAUSE"/>
+        <include refid="QUERY_ORDER_LIMIT_CONDITION"/>``
+    </select>
+    <sql id="QUERY_COLUMN_LIST">
+        `id` AS 'id',`content` AS 'content',`goods_id` AS 'goods_id',`user_id` AS 'user_id'
+    </sql>
+    <!-- 查询总数 -->
+    <select id="selectListCount" parameterType="java.util.Map" resultType="int">
+        SELECT COUNT(id) AS COUNT FROM
+        <include refid="TABLE"/>
+        <include refid="QUERY_WHERE_CLAUSE"/>
+        <include refid="QUERY_ORDER_LIMIT_CONDITION"/>
+    </select>
 
+    <insert id="update" parameterType="core.admin.domain.GoodsMessage">
+        UPDATE <include refid="TABLE"/>
+        <include refid="UPDATE_COLUMN_SET"/>
+        <![CDATA[WHERE id = #{id}]]>
+    </insert>
+
+    <update id="delete" parameterType="java.lang.Long" >
+        DELETE FROM <include refid="TABLE"/> WHERE id = #{id}
+    </update>
+
+
+    <!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
+    <sql id="QUERY_WHERE_CLAUSE">
+        <where>
+            <if test="id != null and id != ''"><![CDATA[AND `id` = #{id}]]></if>
+            <if test="content != null and content != ''"><![CDATA[AND `content` = #{content}]]></if>
+            <if test="userId != null and userId != ''"><![CDATA[AND `user_id` = #{userId}]]></if>
+            <if test="goodsId != null and goodsId != ''"><![CDATA[AND `goods_id` = #{goodsId}]]></if>
+        </where>
+    </sql>
+
+    <!-- 智能排序与分页 -->
+    <sql id="QUERY_ORDER_LIMIT_CONDITION">
+        <if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
+        <if test="startIndex != null and startIndex &gt;= 0 and pageSize != null and pageSize &gt; 0"><![CDATA[LIMIT #{startIndex},#{pageSize}]]></if>
+    </sql>
+    <sql id="UPDATE_COLUMN_SET">
+        <set>
+            <if test="goodsId != null and goodsId != ''"><![CDATA[ `goods_id` = #{goodsId},]]></if>
+            <if test="content != null and content != ''"><![CDATA[ `content` = #{content},]]></if>
+            <if test="userId != null and userId != ''"><![CDATA[ `user_id` = #{userId},]]></if>
+        </set>
+    </sql>
 
     <sql id="TABLE">
         <![CDATA[ goods_message ]]>

@@ -41,7 +41,7 @@
         <include refid="QUERY_ORDER_LIMIT_CONDITION"/>
     </select>
 
-    <insert id="update" parameterType="core.admin.domain.Menu">
+    <insert id="update" parameterType="core.admin.domain.GoodsPic">
         UPDATE <include refid="TABLE"/>
         <include refid="UPDATE_COLUMN_SET"/>
         <![CDATA[WHERE id = #{id}]]>
