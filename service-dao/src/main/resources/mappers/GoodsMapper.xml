@@ -52,8 +52,8 @@
     </select>
 
     <sql id="QUERY_COLUMN_LIST">
-        `id` AS 'g_id',`goods_name` AS 'g_goods_name',`goods_desc` AS 'g_goods_name',`goods_pic` AS 'g_goods_pic',`goods_price` AS 'g_goods_price',
-        `goods_unit` AS 'g_goods_unit',`goods_count` AS 'g_goods_count',`user_id` AS 'g_user_id',`type_id` AS 'g_type_id'
+        g.id AS 'g_id',g.goods_name AS 'g_goods_name',g.goods_desc AS 'g_goods_name',g.goods_pic AS 'g_goods_pic',g.goods_price AS 'g_goods_price',
+        g.goods_unit AS 'g_goods_unit',g.goods_count AS 'g_goods_count',g.user_id AS 'g_user_id',g.type_id AS 'g_type_id'
     </sql>
     <sql id="QUERY_ONE_COLUMN_LIST">
         g.id AS 'g_id',g.goods_name AS 'g_goods_name',g.goods_desc AS 'g_goods_name',g.goods_pic AS 'g_goods_pic',g.goods_price AS 'g_goods_price',

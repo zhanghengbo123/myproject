@@ -65,6 +65,9 @@ public class goodsTest {
     public void selectGoods(){
         Map<String,Object> search = new HashMap<>();
         List<Goods> list = goodsMapper.selectList(search);
+        if(list == null){
+            System.out.println("djfszfgvdnxkbfc/vb");
+        }
         if(list != null){
             for(Goods goods : list){
                 if(goods != null)
