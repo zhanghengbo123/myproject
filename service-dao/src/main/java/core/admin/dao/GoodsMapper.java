@@ -21,5 +21,5 @@ public interface GoodsMapper {
 
     public Integer selectListCount(Map<String, Object> params);
 
-    public List<Goods> selectOne(Long id);
+    public Goods selectOne(Long id);
 }
