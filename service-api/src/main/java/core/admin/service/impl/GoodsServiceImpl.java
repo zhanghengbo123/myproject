@@ -6,6 +6,7 @@ import core.admin.domain.Goods;
 import core.admin.service.GoodsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
 /**
  * Created by zhang on 2017/3/20.
  */
+@Service("GoodsService")
 public class GoodsServiceImpl implements GoodsService {
 
     private final Logger logger = Logger.getLogger(GoodsServiceImpl.class);
@@ -69,6 +71,6 @@ public class GoodsServiceImpl implements GoodsService {
             logger.error(e.getMessage(),e);
             throw new AppException(e);
         }
-        return 0;
+        return rows;
     }
 }
